@@ -9,7 +9,7 @@ function App() {
   useEffect(() => { carregarAlunos(); }, []);
 
   const carregarAlunos = async () => {
-    const res = await axios.get('https://sistema-escola-1sy0.onrender.com/alunos');
+    const res = await axios.get('https://sistema-emeifparessaca.onrender.com/alunos');
     setAlunos(res.data);
   };
 
@@ -19,7 +19,7 @@ function App() {
 
   const salvar = async (e) => {
     e.preventDefault();
-    await axios.post('https://sistema-escola-1sy0.onrender.com/alunos', form);
+    await axios.post('https://sistema-emeifparessaca.onrender.com/alunos', form);
     setForm({ nome: '', responsavel: '', telefone: '', dataRetirada: new Date().toISOString().split('T')[0] });
     carregarAlunos();
   };
@@ -27,7 +27,7 @@ function App() {
   const cobrar = async (id) => {
     if (!window.confirm("Disparar WhatsApp de cobrança?")) return;
     try {
-        await axios.post(`https://sistema-escola-1sy0.onrender.com/cobrar/${id}`);
+        await axios.post(`https://sistema-emeifparessaca.onrender.com/cobrar/${id}`);
         alert('✅ Enviado!');
         carregarAlunos();
     } catch { alert('Erro ao enviar.'); }
@@ -36,7 +36,7 @@ function App() {
   const excluir = async (id) => {
     if (!window.confirm("Tem certeza que deseja EXCLUIR este aluno?")) return;
     try {
-        await axios.delete(`https://sistema-escola-1sy0.onrender.com/alunos/${id}`);
+        await axios.delete(`https://sistema-emeifparessaca.onrender.com/alunos/${id}`);
         carregarAlunos();
     } catch { alert('Erro ao excluir.'); }
   };
